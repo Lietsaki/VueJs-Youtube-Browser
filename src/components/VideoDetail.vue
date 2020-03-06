@@ -26,6 +26,9 @@ export default {
   computed: {
     videoUrl() {
       // video.Id is identical to this.video.id.videoId, so we can surround the variable name with curly braces and remove the property name (ES2015 syntax)
+      // In other words, there is a 'videoId' property inside this.video.id, so we can call our variable like that and surround it in curly braces,
+      // that means that the name within such curly braces is a property of this.video.id
+      // This is the same as saying 'videoId = this.video.id.videoId'
       const { videoId } = this.video.id;
       return `https://www.youtube.com/embed/${videoId}`;
     }
