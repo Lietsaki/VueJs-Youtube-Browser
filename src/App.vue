@@ -59,9 +59,6 @@ export default {
       this.pickedAVideo = true;
     },
   },
-  mounted() {
-    console.log();
-  },
 };
 </script>
 
