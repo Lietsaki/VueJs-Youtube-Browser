@@ -16,7 +16,7 @@ export default {
     // This video is an object coming from the array of 5 objects that comes from VideoList.vue
     video: Object
   },
-  // Computed property can not only be used to transform data from out data model, but also to shorten or somehow do a calculation in
+  // Computed properties can not only be used to transform data from out data model, but also to shorten or somehow do a calculation in
   // our props as well, since the props are simply data coming from a parent element.
   computed: {
     thumbnailUrl() {

@@ -3,9 +3,9 @@
     <!-- Bind each one of the 5 videos returned by the YT API to our child component VideoListItem.vue and pass them as props called 
       video -->
     <VideoListItem
-      v-for="videoResult in videos"
-      :key="videoResult.etag"
-      :video="videoResult"
+      v-for="video in videos"
+      :key="video.etag"
+      :video="video"
       @videoSelect="onVideoSelect"
     ></VideoListItem>
   </ul>
@@ -19,24 +19,24 @@ export default {
   data() {
     return {
       colSpan4: 'list-group col-md-4',
-      colSpan12: 'list-group col-md-12'
+      colSpan12: 'list-group col-md-12',
     };
   },
   components: {
-    VideoListItem
+    VideoListItem,
   },
   // Props is data that we expect to get from a parent element. For instance, 'videos' is an array containing 5 objects
   // that we get from App.vue, and each one of those objects contains data about one video.
   props: {
     videos: Array,
-    pickedAVideo: Boolean
+    pickedAVideo: Boolean,
   },
   methods: {
     // Note: 'video' is the data that we received from the videoSelect event from VideoListItem.vue
     onVideoSelect(video) {
       this.$emit('videoSelect', video);
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -5,7 +5,8 @@
       <videoDetail :video="selectedVideo"></videoDetail>
       <!-- NOTE1 :videos is the same as saying v-bind:videos="videos" -->
       <!-- NOTE2 :videos is the name that we asign to the data(the prop) we're sending to our child, this is how we'll refer to it on VideoList.vue 
-      Inside the double quotes we put the name of the data property that we're sending as it appers in this file, in this case, "videos". -->
+      Inside the double quotes we put the name of the data property that we're sending as it appers in this file, in this case, "videos".
+      LEFT SIDE = property name in child component || RIGHT SIDE = property name in parent component -->
       <VideoList
         @videoSelect="onVideoSelect"
         :videos="videos"
@@ -30,7 +31,7 @@ export default {
   components: {
     SearchBar,
     VideoList,
-    VideoDetail
+    VideoDetail,
   },
   data() {
     return { videos: [], selectedVideo: null, pickedAVideo: false };
@@ -41,22 +42,23 @@ export default {
       axios
         .get('https://www.googleapis.com/youtube/v3/search', {
           params: {
-            key: process.env.VUE_APP_YOUTUBE_API_KEY,
+            key: 'AIzaSyADVgoCxh14oDdWXaoc1go3Ej-YcOLZbPg',
             type: 'video',
-            part: 'snippet', // Return just a small snippet of every video
-            q: searchTerm
-          }
+            part: 'snippet',
+            q: searchTerm,
+          },
         })
-        .then(res => {
-          this.videos = res.data.items;
-          //console.log(this.videos);
-        });
+        .then((response) => {
+          this.videos = response.data.items;
+          console.log(response);
+        })
+        .catch((err) => console.log(err));
     },
     onVideoSelect(video) {
       this.selectedVideo = video;
       this.pickedAVideo = true;
-    }
-  }
+    },
+  },
 };
 </script>
 
