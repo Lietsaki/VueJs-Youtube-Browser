@@ -3,6 +3,7 @@ node_modules
 /dist
 package-lock.json
 .env
+.env.production
 
 # local env files
 .env.local

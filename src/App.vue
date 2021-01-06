@@ -42,7 +42,7 @@ export default {
       axios
         .get('https://www.googleapis.com/youtube/v3/search', {
           params: {
-            key: 'AIzaSyADVgoCxh14oDdWXaoc1go3Ej-YcOLZbPg',
+            key: process.env.VUE_APP_APIKEY,
             type: 'video',
             part: 'snippet',
             q: searchTerm,
@@ -58,6 +58,9 @@ export default {
       this.selectedVideo = video;
       this.pickedAVideo = true;
     },
+  },
+  mounted() {
+    console.log();
   },
 };
 </script>
